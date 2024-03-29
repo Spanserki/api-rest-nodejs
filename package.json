@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "knex": "node --loader tsx ./node_modules/.bin/knex"
+    "knex": "node --no-warnings --loader tsx ./node_modules/.bin/knex"
   },
   "keywords": [],
   "author": "",
@@ -15,8 +15,10 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
+    "@types/uuid": "^9.0.8",
     "fastify": "^4.26.2",
     "knex": "^3.1.0",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "uuid": "^9.0.1"
   }
 }

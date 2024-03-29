@@ -1,11 +1,16 @@
 import fastfy from 'fastify'
-import { knex } from './database';
+import { knex } from './database'
+import { v4 } from 'uuid'
 
 const app = fastfy();
 
 app.get('/hello', async () => {
-    const tables = await knex('sqlite_schema').select('*')
-    return tables
+    const transaction = await knex('transactions').insert({
+        id: v4(),
+        title: 'Transação de teste',
+        amount: 1000
+    }).returning('*')
+    return transaction
 })
 
 app.listen({
